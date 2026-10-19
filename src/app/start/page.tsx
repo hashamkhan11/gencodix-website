@@ -29,7 +29,7 @@ export default function StartPage() {
         <ul className="mt-10 space-y-6">
           {points.map(({ icon: Icon, t, d }) => (
             <li key={t} className="flex gap-4">
-              <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-brand-soft text-brand">
+              <span className="grid size-10 shrink-0 place-items-center rounded-md bg-brand-soft text-brand">
                 <Icon size={18} aria-hidden="true" />
               </span>
               <div>

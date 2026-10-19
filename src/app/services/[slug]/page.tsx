@@ -48,7 +48,7 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
         <div className="mt-8 grid gap-12 lg:grid-cols-[1.4fr_1fr]">
           <div>
             <div className="flex items-center gap-3">
-              <span className="grid size-12 place-items-center rounded-xl bg-brand-soft text-brand">
+              <span className="grid size-12 place-items-center rounded-md bg-brand-soft text-brand">
                 <ServiceIcon name={s.icon} size={22} />
               </span>
               <span className="chip">{s.kicker}</span>

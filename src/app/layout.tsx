@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Bricolage_Grotesque, Geist, Geist_Mono } from "next/font/google";
+import { Geist } from "next/font/google";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { site } from "@/content/site";
@@ -8,17 +8,6 @@ import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-  preload: false, // small labels only; not worth competing with the heading and body fonts
-});
-
-const bricolage = Bricolage_Grotesque({
-  variable: "--font-bricolage",
   subsets: ["latin"],
 });
 
@@ -41,8 +30,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#07080a",
-  colorScheme: "dark",
+  themeColor: "#fafaf7",
+  colorScheme: "light",
 };
 
 const orgJsonLd = {
@@ -72,9 +61,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${bricolage.variable} dark h-full antialiased`}
+      className={`${geistSans.variable} h-full antialiased`}
     >
-      <body className="grain flex min-h-full flex-col font-sans">
+      <body className="flex min-h-full flex-col font-sans">
         <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 btn-primary">
           Skip to content
         </a>

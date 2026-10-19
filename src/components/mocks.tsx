@@ -4,11 +4,11 @@ import type { MockKind } from "@/content/work";
 
 function Frame({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="overflow-hidden rounded-xl border border-line bg-surface shadow-[0_20px_60px_-30px_rgba(0,0,0,0.35)]">
+    <div className="overflow-hidden rounded-md border border-line bg-surface">
       <div className="flex items-center gap-1.5 border-b border-line bg-surface-2 px-3 py-2">
-        <span className="size-2.5 rounded-full bg-[#ff5f57]" />
-        <span className="size-2.5 rounded-full bg-[#febc2e]" />
-        <span className="size-2.5 rounded-full bg-[#28c840]" />
+        <span className="size-2.5 rounded-full bg-line" />
+        <span className="size-2.5 rounded-full bg-line" />
+        <span className="size-2.5 rounded-full bg-line" />
         <span className="ml-3 truncate font-mono text-[10px] text-ink-3">{title}</span>
       </div>
       {children}
@@ -24,7 +24,7 @@ export function WhatsAppMock() {
     { me: true, text: "Booked ✅ Thu 4:30 PM with Dr. Sara. I'll remind you the day before. Reply R to reschedule.", time: "09:42" },
   ];
   return (
-    <div className="mx-auto w-full max-w-[300px] overflow-hidden rounded-[28px] border-[6px] border-ink bg-[#efeae2] shadow-xl dark:bg-[#0b141a]">
+    <div className="mx-auto w-full max-w-[300px] overflow-hidden rounded-[28px] border-[6px] border-ink bg-[#efeae2]">
       <div className="flex items-center gap-2 bg-[#075e54] px-3 py-2.5 text-white">
         <div className="grid size-7 place-items-center rounded-full bg-white/20 text-[11px] font-semibold">CF</div>
         <div className="leading-tight">
@@ -37,11 +37,11 @@ export function WhatsAppMock() {
           <div key={i} className={`flex ${m.me ? "justify-end" : "justify-start"}`}>
             <div
               className={`max-w-[82%] rounded-lg px-2.5 py-1.5 text-[11.5px] leading-snug text-[#111b21] shadow-sm ${
-                m.me ? "bg-[#d9fdd3] dark:bg-[#005c4b] dark:text-white" : "bg-white dark:bg-[#202c33] dark:text-white"
+                m.me ? "bg-[#d9fdd3]" : "bg-white"
               }`}
             >
               {m.text}
-              <span className="ml-1.5 inline-flex items-center gap-0.5 align-bottom text-[9px] opacity-60">
+              <span className="ml-1.5 inline-flex items-center gap-0.5 align-bottom text-[9px] text-[#54656f]">
                 {m.time}
                 {m.me && <CheckCheck size={11} className="text-[#53bdeb]" />}
               </span>
@@ -109,7 +109,7 @@ export function DashboardMock({ variant = "shipdesk" }: { variant?: string }) {
             {rows.map((r) => (
               <div key={r.a} className="flex items-center justify-between gap-2 px-2 py-1.5">
                 <span className="truncate">{r.a}</span>
-                <span className={`shrink-0 ${r.ok ? "text-ink-3" : "font-medium text-[#d97706]"}`}>
+                <span className={`shrink-0 ${r.ok ? "text-ink-3" : "font-medium text-[#b45309]"}`}>
                   {!r.ok && <TriangleAlert size={10} className="mr-1 inline" />}
                   {r.b} · {r.c}
                 </span>

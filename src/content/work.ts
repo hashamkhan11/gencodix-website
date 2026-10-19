@@ -31,10 +31,10 @@ export const products: Product[] = [
     summary:
       "Small wholesale traders in Pakistan keep their books in a paper khata or in their heads. KhataBol lets them keep using the app they already live in: WhatsApp. They type in Roman Urdu, Urdu or English, send an Urdu voice note, or snap a photo of a parchi or a payment screenshot. The bot reads the entry back in plain words, the trader replies \"Haan\", and only then is it saved to the ledger. A Flutter app shows who owes what, stock in hand and profit, updating in real time.",
     hue: "#5eead4",
-    cover: "/images/products/khatabol/banner.png",
+    cover: "/images/products/khatabol/banner.webp",
     shots: [
-      { src: "/images/products/khatabol/deals.png", alt: "KhataBol app: deals list with purchases, sales and commission filters", w: 1080, h: 2400, phone: true },
-      { src: "/images/products/khatabol/profit.png", alt: "KhataBol app: monthly profit and loss breakdown in Roman Urdu", w: 1080, h: 2400, phone: true },
+      { src: "/images/products/khatabol/deals.webp", alt: "KhataBol app: deals list with purchases, sales and commission filters", w: 1080, h: 2400, phone: true },
+      { src: "/images/products/khatabol/profit.webp", alt: "KhataBol app: monthly profit and loss breakdown in Roman Urdu", w: 1080, h: 2400, phone: true },
     ],
     facts: [
       { value: "3", label: "Ways to enter: text, voice, photo" },
@@ -59,12 +59,12 @@ export const products: Product[] = [
     summary:
       "PropNest is a complete marketplace with four roles — buyers, agents, admins and a super admin. Buyers search on a map by radius or by drawing an area, compare homes side by side and get emailed when a saved search has new matches. Agents pay for featured listings and subscriptions through Stripe. Admins review listings, handle refunds and watch revenue in an analytics console.",
     hue: "#e8743b",
-    cover: "/images/products/propnest/banner.png",
+    cover: "/images/products/propnest/banner.webp",
     shots: [
-      { src: "/images/products/propnest/home.png", alt: "PropNest home page with search and featured property", w: 1440, h: 900 },
-      { src: "/images/products/propnest/map-search.png", alt: "PropNest map search with clustered listings and filters", w: 1440, h: 900 },
-      { src: "/images/products/propnest/admin-analytics.png", alt: "PropNest admin analytics: revenue, users and listings charts", w: 1440, h: 900 },
-      { src: "/images/products/propnest/agent-dashboard.png", alt: "PropNest agent dashboard", w: 1440, h: 900 },
+      { src: "/images/products/propnest/home.webp", alt: "PropNest home page with search and featured property", w: 1440, h: 900 },
+      { src: "/images/products/propnest/map-search.webp", alt: "PropNest map search with clustered listings and filters", w: 1440, h: 900 },
+      { src: "/images/products/propnest/admin-analytics.webp", alt: "PropNest admin analytics: revenue, users and listings charts", w: 1440, h: 900 },
+      { src: "/images/products/propnest/agent-dashboard.webp", alt: "PropNest agent dashboard", w: 1440, h: 900 },
     ],
     facts: [
       { value: "4", label: "User roles" },
@@ -91,10 +91,10 @@ export const products: Product[] = [
     summary:
       "FitHub runs a gym end to end. Staff manage members, plans, classes, payments and trainers from a web dashboard. Members use a Flutter app to check in with a QR code, book classes (with waitlists), track body measurements and get push notifications. An ESP32 controller on the gym door unlocks from the member's phone or a fingerprint. Many gyms share one platform, each with its own data, billed through Stripe.",
     hue: "#f45d2c",
-    cover: "/images/products/fithub/banner.png",
+    cover: "/images/products/fithub/banner.webp",
     shots: [
       { src: "/images/products/fithub/dashboard.webp", alt: "FitHub staff dashboard with check-ins chart, plan and status breakdown", w: 1328, h: 1184 },
-      { src: "/images/products/fithub/feature.png", alt: "FitHub — run your gym from one app", w: 1024, h: 500 },
+      { src: "/images/products/fithub/feature.webp", alt: "FitHub — run your gym from one app", w: 1024, h: 500 },
     ],
     facts: [
       { value: "3", label: "Apps: web, mobile, firmware" },

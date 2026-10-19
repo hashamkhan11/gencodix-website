@@ -71,23 +71,17 @@ function ProductPage({ p }: { p: Product }) {
 
   return (
     <>
-      <section className="relative -mt-[4.25rem] overflow-hidden pt-[4.25rem]">
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 -z-10 opacity-30"
-          style={{ background: `radial-gradient(50rem 30rem at 80% -10%, ${p.hue}, transparent 65%)` }}
-        />
-        <div aria-hidden="true" className="grid-bg absolute inset-0 -z-10" />
+      <section>
         <div className="container-x pt-10 lg:pt-14">
           <BackLink />
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <ShippedBadge />
-            <p className="font-mono text-xs text-ink-2">{p.category}</p>
+            <p className="text-sm text-ink-3">{p.category}</p>
           </div>
           <h1 className="h-display mt-5">{p.name}</h1>
           <p className="mt-5 max-w-3xl text-xl leading-relaxed text-ink-2">{p.tagline}</p>
           {p.credit && (
-            <p className="mt-4 max-w-3xl rounded-xl border border-line bg-surface/70 px-4 py-3 text-sm leading-relaxed text-ink-2">
+            <p className="mt-4 max-w-3xl rounded-md border border-line bg-surface px-4 py-3 text-sm leading-relaxed text-ink-2">
               {p.credit.long}
             </p>
           )}
@@ -100,8 +94,7 @@ function ProductPage({ p }: { p: Product }) {
           </div>
           {note && <p className="mt-3 text-xs text-ink-3">{note}</p>}
 
-          <div className="relative mt-14">
-            <div aria-hidden="true" className="absolute -inset-x-16 -bottom-20 top-1/4 -z-10 opacity-25" style={{ background: `radial-gradient(closest-side, ${p.hue}, transparent)` }} />
+          <div className="mt-14 overflow-hidden rounded-lg border border-line">
             <Image
               src={p.cover}
               alt={`${p.name} — ${p.category}`}
@@ -109,15 +102,15 @@ function ProductPage({ p }: { p: Product }) {
               height={640}
               priority
               sizes="(min-width: 1152px) 1104px, 100vw"
-              className="w-full rounded-2xl shadow-2xl ring-1 ring-white/10"
+              className="h-auto w-full"
             />
           </div>
 
-          <dl className="mt-8 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-3">
+          <dl className="mt-8 grid gap-px overflow-hidden rounded-lg border border-line bg-line sm:grid-cols-3">
             {p.facts.map((f) => (
               <div key={f.label} className="flex flex-col-reverse bg-surface p-6">
                 <dt className="mt-1 text-sm text-ink-3">{f.label}</dt>
-                <dd className="font-display text-4xl font-semibold tracking-tight">{f.value}</dd>
+                <dd className="text-3xl font-semibold tracking-tight">{f.value}</dd>
               </div>
             ))}
           </dl>
@@ -126,8 +119,7 @@ function ProductPage({ p }: { p: Product }) {
 
       <section className="container-x mt-24 grid gap-12 lg:grid-cols-[1fr_1.5fr]">
         <div>
-          <p className="eyebrow">
-            <span className="size-1.5 rounded-[2px] bg-brand" aria-hidden="true" /> The product
+          <p className="eyebrow">The product
           </p>
           <div className="mt-6 flex flex-wrap gap-1.5">
             {p.stack.map((t) => (
@@ -135,7 +127,7 @@ function ProductPage({ p }: { p: Product }) {
             ))}
           </div>
           {service && (
-            <Link href={`/services/${service.slug}`} className="mt-8 inline-flex items-center gap-1.5 text-sm font-medium text-brand">
+            <Link href={`/services/${service.slug}`} className="mt-8 inline-flex items-center gap-1.5 text-sm font-medium underline-offset-4 hover:underline">
               Related service: {service.name} <ArrowRight size={15} aria-hidden="true" />
             </Link>
           )}
@@ -145,31 +137,30 @@ function ProductPage({ p }: { p: Product }) {
 
       <section className="container-x mt-20 grid gap-4 sm:grid-cols-2">
         {p.highlights.map((h, i) => (
-          <div key={h.title} className="reveal card p-7">
-            <p className="font-mono text-xs text-brand">0{i + 1}</p>
-            <h2 className="mt-3 font-display text-xl font-semibold">{h.title}</h2>
+          <div key={h.title} className="card p-7">
+            <p className="text-sm text-ink-3">0{i + 1}</p>
+            <h2 className="mt-3 text-xl font-semibold">{h.title}</h2>
             <p className="mt-2 leading-relaxed text-ink-2">{h.body}</p>
           </div>
         ))}
       </section>
 
       <section className="container-x mt-24">
-        <p className="eyebrow">
-          <span className="size-1.5 rounded-[2px] bg-brand" aria-hidden="true" /> Screens from the real product
+        <p className="eyebrow">Screens from the real product
         </p>
         {screens.length > 0 && (
           <div className="mt-8 grid gap-5 md:grid-cols-2">
             {screens.map((s) => (
-              <figure key={s.src} className="reveal overflow-hidden rounded-2xl border border-line bg-surface-2 p-2">
-                <Image src={s.src} alt={s.alt} width={s.w} height={s.h} sizes="(min-width: 768px) 550px, 100vw" className="h-auto w-full rounded-xl" />
+              <figure key={s.src} className="overflow-hidden rounded-lg border border-line bg-surface-2 p-2">
+                <Image src={s.src} alt={s.alt} width={s.w} height={s.h} sizes="(min-width: 768px) 550px, 100vw" className="h-auto w-full rounded-md" />
               </figure>
             ))}
           </div>
         )}
         {phones.length > 0 && (
-          <div className="mt-8 flex justify-center gap-5 rounded-3xl border border-line bg-surface-2 p-6 sm:gap-10 sm:p-12">
+          <div className="mt-8 flex justify-center gap-5 rounded-lg border border-line bg-surface-2 p-6 sm:gap-10 sm:p-12">
             {phones.map((s) => (
-              <figure key={s.src} className="reveal w-[46%] max-w-[260px] overflow-hidden rounded-[1.75rem] border-[5px] border-[#1c1f25] shadow-2xl">
+              <figure key={s.src} className="w-[46%] max-w-[260px] overflow-hidden rounded-[1.75rem] border-[5px] border-ink">
                 <Image src={s.src} alt={s.alt} width={s.w} height={s.h} sizes="260px" className="h-auto w-full" />
               </figure>
             ))}
@@ -196,7 +187,7 @@ function ConceptPage({ c }: { c: Concept }) {
         <div className="mt-8 grid items-center gap-12 lg:grid-cols-2">
           <div>
             <div className="flex flex-wrap items-center gap-3">
-              <p className="font-mono text-xs text-brand">{c.category}</p>
+              <p className="text-sm text-ink-3">{c.category}</p>
               <ConceptBadge />
             </div>
             <h1 className="h-display mt-5">{c.name}</h1>
@@ -205,14 +196,13 @@ function ConceptPage({ c }: { c: Concept }) {
               {c.targets.map((t) => (
                 <div key={t.label} className="card flex flex-col-reverse p-4">
                   <dt className="text-xs text-ink-3">{t.label}</dt>
-                  <dd className="mb-1 font-display text-lg font-semibold">{t.value}</dd>
+                  <dd className="mb-1 text-lg font-semibold">{t.value}</dd>
                 </div>
               ))}
             </dl>
             <p className="mt-3 text-xs text-ink-3">Design targets for this concept, not measured client results.</p>
           </div>
-          <div className="relative overflow-hidden rounded-3xl border border-line bg-surface-2 p-6 sm:p-10">
-            <div aria-hidden="true" className="grid-bg absolute inset-0" />
+          <div className="relative overflow-hidden rounded-lg border border-line bg-surface-2 p-6 sm:p-10">
             <div className="relative">
               <ConceptMock kind={c.mock} slug={c.slug} />
             </div>
@@ -251,7 +241,7 @@ function ConceptPage({ c }: { c: Concept }) {
             ))}
           </div>
           {service && (
-            <Link href={`/services/${service.slug}`} className="mt-8 inline-flex items-center gap-1.5 text-sm font-medium text-brand">
+            <Link href={`/services/${service.slug}`} className="mt-8 inline-flex items-center gap-1.5 text-sm font-medium underline-offset-4 hover:underline">
               Related service: {service.name} <ArrowRight size={15} aria-hidden="true" />
             </Link>
           )}

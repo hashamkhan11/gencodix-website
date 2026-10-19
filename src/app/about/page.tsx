@@ -54,7 +54,7 @@ export default function AboutPage() {
         <div className="mt-10 grid gap-4 sm:grid-cols-2">
           {principles.map((p, i) => (
             <div key={p.t} className="card p-6">
-              <p className="font-mono text-xs text-brand">0{i + 1}</p>
+              <p className="text-sm text-ink-3">0{i + 1}</p>
               <h3 className="mt-3 text-lg font-semibold">{p.t}</h3>
               <p className="mt-2 leading-relaxed text-ink-2">{p.d}</p>
             </div>

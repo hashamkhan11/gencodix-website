@@ -29,7 +29,7 @@ export default function ServicesPage() {
           <article key={s.slug} className="card grid gap-8 p-6 sm:p-8 lg:grid-cols-[1.3fr_1fr]">
             <div>
               <div className="flex items-center gap-3">
-                <span className="grid size-11 place-items-center rounded-xl bg-brand-soft text-brand">
+                <span className="grid size-11 place-items-center rounded-md bg-brand-soft text-brand">
                   <ServiceIcon name={s.icon} size={20} />
                 </span>
                 <span className="chip">{s.kicker}</span>
@@ -40,7 +40,7 @@ export default function ServicesPage() {
                 Details & use cases <ArrowRight size={15} aria-hidden="true" />
               </Link>
             </div>
-            <div className="rounded-xl bg-surface-2 p-5">
+            <div className="rounded-md bg-surface-2 p-5">
               <p className="text-sm text-ink-2">
                 From <span className="text-2xl font-semibold text-ink">{usd(s.from)}</span>
                 {s.unit ?? ""}

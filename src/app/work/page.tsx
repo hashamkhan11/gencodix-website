@@ -3,7 +3,6 @@ import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { concepts, mobileConcepts, products, shipped } from "@/content/work";
 import { ConceptBadge, ConceptCard, CtaBand, ProductCard, SectionHead } from "@/components/blocks";
-import { Spotlight } from "@/components/spotlight";
 
 export const metadata: Metadata = {
   title: "Work — shipped products, concept builds and client sites",
@@ -16,8 +15,7 @@ export default function WorkPage() {
   return (
     <>
       <section className="container-x pt-16 lg:pt-24">
-        <p className="eyebrow">
-          <span className="size-1.5 rounded-[2px] bg-brand" aria-hidden="true" /> Work
+        <p className="eyebrow">Work
         </p>
         <h1 className="h-display mt-5 max-w-4xl">
           Shipped products, <em>not just slides.</em>
@@ -28,11 +26,11 @@ export default function WorkPage() {
         </p>
       </section>
 
-      <Spotlight className="container-x mt-14 space-y-6">
+      <div className="container-x mt-14 space-y-6">
         {products.map((p, i) => (
           <ProductCard key={p.slug} p={p} flip={i % 2 === 1} />
         ))}
-      </Spotlight>
+      </div>
 
       <section id="concepts" className="container-x mt-32 scroll-mt-24">
         <SectionHead
@@ -40,11 +38,11 @@ export default function WorkPage() {
           title="Built to show what's possible."
           body="Products we design and prototype in-house to demonstrate today's AI capabilities. Each one is a head start we can adapt for your business. Numbers on these pages are design targets, not client results."
         />
-        <Spotlight className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {concepts.map((c) => (
             <ConceptCard key={c.slug} c={c} />
           ))}
-        </Spotlight>
+        </div>
       </section>
 
       <section className="container-x mt-28">
@@ -80,7 +78,7 @@ export default function WorkPage() {
                 <Image src={p.images[0]} alt={`${p.name} website`} fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover object-top" />
               </div>
               <div className="p-5">
-                <p className="font-mono text-xs text-brand">{p.category}</p>
+                <p className="text-sm text-ink-3">{p.category}</p>
                 <h3 className="mt-1.5 font-semibold">{p.name}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink-2">{p.summary}</p>
                 <div className="mt-4 flex flex-wrap gap-1.5">

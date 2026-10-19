@@ -170,7 +170,7 @@ export function Scoper() {
                   key={s}
                   type="button"
                   onClick={() => send(s)}
-                  className="rounded-xl border border-line px-4 py-3 text-left text-sm text-ink-2 transition hover:border-brand hover:text-ink"
+                  className="rounded-md border border-line px-4 py-3 text-left text-sm text-ink-2 transition-colors hover:border-brand hover:text-ink"
                 >
                   {s}
                 </button>
@@ -181,12 +181,12 @@ export function Scoper() {
           messages.map((m, i) =>
             m.role === "user" ? (
               <div key={i} className="flex justify-end">
-                <p className="max-w-[85%] whitespace-pre-wrap rounded-2xl rounded-br-md bg-ink px-4 py-2.5 text-sm text-bg">{m.content}</p>
+                <p className="max-w-[85%] whitespace-pre-wrap rounded-lg rounded-br-md bg-ink px-4 py-2.5 text-sm text-bg">{m.content}</p>
               </div>
             ) : (
               <div key={i} className="max-w-[92%] text-sm leading-relaxed">
                 {m.content ? (
-                  <div className={busy && i === messages.length - 1 ? "caret" : ""}>
+                  <div>
                     <Markdown text={m.content} />
                   </div>
                 ) : (
@@ -297,7 +297,7 @@ function SendBrief({ messages }: { messages: ChatMessage[] }) {
           Send brief
         </button>
       </div>
-      {status === "error" && <p className="mt-2 text-xs text-red-600 dark:text-red-400" role="alert">{error}</p>}
+      {status === "error" && <p className="mt-2 text-xs text-red-600" role="alert">{error}</p>}
     </form>
   );
 }

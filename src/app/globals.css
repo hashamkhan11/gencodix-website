@@ -1,22 +1,21 @@
-﻿@import "tailwindcss";
+@import "tailwindcss";
 
-/* The site is dark by design; `dark:` utilities follow the class on <html>. */
+/* Light only; keep `dark:` utilities inert unless a .dark class is ever added. */
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --bg: #07080a;
-  --surface: #0e1013;
-  --surface-2: #15181d;
-  --ink: #f3f4ef;
-  --ink-2: #a9aeb6;
-  --ink-3: #868c96;
-  --line: #20242b;
-  --brand: #c6f432;
-  --brand-ink: #0a0b0d;
-  --brand-soft: #161c0b;
-  --accent: #c6f432;
-  --violet: #8b7cf6;
-  color-scheme: dark;
+  --bg: #fafaf7;
+  --surface: #ffffff;
+  --surface-2: #f3f2ee;
+  --ink: #16161a;
+  --ink-2: #4f4e4a;
+  --ink-3: #6f6d68;
+  --line: #e3e1db;
+  --brand: #1f5c45;
+  --brand-ink: #ffffff;
+  --brand-soft: #eef3ef;
+  --accent: #1f5c45;
+  color-scheme: light;
 }
 
 @theme inline {
@@ -31,24 +30,20 @@
   --color-brand-ink: var(--brand-ink);
   --color-brand-soft: var(--brand-soft);
   --color-accent: var(--accent);
-  --color-violet: var(--violet);
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-display: var(--font-bricolage);
-}
-
-html {
-  scroll-behavior: smooth;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-display: var(--font-geist-sans);
 }
 
 body {
   background: var(--bg);
   color: var(--ink);
+  font-feature-settings: "ss01", "cv11";
 }
 
 ::selection {
-  background: var(--brand);
-  color: var(--brand-ink);
+  background: var(--ink);
+  color: var(--bg);
 }
 
 @utility container-x {
@@ -56,205 +51,66 @@ body {
 }
 
 @utility btn {
-  @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-medium transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand disabled:cursor-not-allowed disabled:opacity-50;
+  @apply inline-flex items-center justify-center gap-2 rounded-md px-4 py-2.5 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink disabled:cursor-not-allowed disabled:opacity-50;
 }
 
 @utility btn-primary {
-  @apply btn bg-brand text-brand-ink shadow-[0_0_0_1px_rgba(198,244,50,0.4),0_8px_30px_-8px_rgba(198,244,50,0.45)] hover:brightness-110;
+  @apply btn bg-ink text-bg hover:bg-ink/85;
 }
 
 @utility btn-brand {
-  @apply btn bg-brand text-brand-ink hover:brightness-110;
+  @apply btn bg-ink text-bg hover:bg-ink/85;
 }
 
 @utility btn-ghost {
   @apply btn border border-line bg-surface text-ink hover:border-ink-3;
 }
 
+/* Small section label: plain text, no ornaments. */
 @utility eyebrow {
-  @apply inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.18em] text-brand;
+  @apply text-sm font-medium text-ink-3;
 }
 
 @utility h-display {
-  @apply font-display text-[2.9rem] font-semibold leading-[0.98] tracking-[-0.035em] sm:text-6xl lg:text-[4.75rem];
+  @apply text-4xl font-semibold leading-[1.08] tracking-[-0.025em] sm:text-5xl lg:text-[3.5rem];
 }
 
 @utility h-section {
-  @apply font-display text-[2.2rem] font-semibold leading-[1.02] tracking-[-0.03em] sm:text-5xl;
+  @apply text-3xl font-semibold leading-tight tracking-[-0.02em] sm:text-4xl;
 }
 
 @utility card {
-  @apply rounded-2xl border border-line bg-surface;
+  @apply rounded-lg border border-line bg-surface;
 }
 
 @utility chip {
-  @apply inline-flex items-center rounded-full border border-line bg-surface-2 px-2.5 py-1 font-mono text-[11px] text-ink-2;
+  @apply inline-flex items-center rounded border border-line bg-surface px-2 py-0.5 text-xs text-ink-2;
 }
 
 @utility concept-badge {
-  @apply inline-flex items-center gap-1.5 rounded-full border border-dashed border-ink-3/70 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-ink-3;
+  @apply inline-flex items-center gap-1.5 rounded border border-dashed border-ink-3/60 px-2 py-0.5 text-xs text-ink-3;
 }
 
 @utility real-badge {
-  @apply inline-flex items-center gap-1.5 rounded-full bg-brand/10 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-brand ring-1 ring-brand/30;
+  @apply inline-flex items-center gap-1.5 rounded bg-brand-soft px-2 py-0.5 text-xs font-medium text-brand;
 }
 
 @utility field {
-  @apply w-full rounded-xl border border-line bg-surface-2 px-4 py-3 text-sm text-ink placeholder:text-ink-3 focus:border-brand focus:outline-none;
+  @apply w-full rounded-md border border-line bg-surface px-3.5 py-2.5 text-sm text-ink placeholder:text-ink-3 focus:border-ink focus:outline-none;
 }
 
-/* Accent words in headings: colour, not italics. */
+/* Emphasised words in headings: muted, not coloured or italic. */
 .h-display em,
 .h-section em {
   font-style: normal;
-  color: var(--brand);
-}
-
-/* Soft aurora behind the hero, plus film grain over the whole page. */
-.aurora {
-  background:
-    radial-gradient(40rem 26rem at 78% 8%, rgba(198, 244, 50, 0.16), transparent 70%),
-    radial-gradient(36rem 30rem at 12% 0%, rgba(139, 124, 246, 0.18), transparent 70%),
-    radial-gradient(30rem 20rem at 50% 100%, rgba(45, 212, 191, 0.07), transparent 70%);
-}
-
-.grain::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 60;
-  pointer-events: none;
-  opacity: 0.05;
-  transform: translateZ(0); /* own layer: rasterised once, never repainted on scroll */
-  contain: strict;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-.grid-bg {
-  background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
-  background-size: 56px 56px;
-  mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, black 30%, transparent 75%);
-}
-
-/* Cards that light up under the pointer (position set by <Spotlight>). */
-.spot {
-  position: relative;
-  isolation: isolate;
-}
-.spot::before {
-  content: "";
-  position: absolute;
-  inset: -1px;
-  z-index: -1;
-  border-radius: inherit;
-  padding: 1px;
-  background: radial-gradient(22rem circle at var(--mx, -999px) var(--my, -999px), rgba(198, 244, 50, 0.55), transparent 40%);
-  mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  mask-composite: exclude;
-  pointer-events: none;
-}
-.spot::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  border-radius: inherit;
-  background: radial-gradient(26rem circle at var(--mx, -999px) var(--my, -999px), rgba(198, 244, 50, 0.06), transparent 45%);
-  pointer-events: none;
-}
-
-/* Gradient text for the big statement lines. */
-.text-sheen {
-  background: linear-gradient(180deg, #ffffff 20%, #8d929b 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-@keyframes marquee {
-  to {
-    transform: translateX(-50%);
-  }
-}
-.marquee {
-  animation: marquee 40s linear infinite;
-  will-change: transform;
-}
-
-@keyframes blink {
-  50% {
-    opacity: 0;
-  }
-}
-.caret::after {
-  content: "\258D";
-  margin-left: 2px;
-  color: var(--brand);
-  animation: blink 1s steps(1) infinite;
-}
-
-/* Pulse ring drawn on a pseudo-element and animated with transform/opacity (compositor only). */
-@keyframes pulse-ring {
-  from {
-    transform: scale(1);
-    opacity: 0.6;
-  }
-  to {
-    transform: scale(3.5);
-    opacity: 0;
-  }
-}
-.live-dot {
-  position: relative;
-}
-.live-dot::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: inherit;
-  animation: pulse-ring 1.6s ease-out infinite;
-}
-
-@keyframes rise {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-}
-.rise {
-  animation: rise 0.45s ease-out both;
-}
-
-/* Below-the-fold sections skip layout and paint until they near the viewport. */
-main > section:not(:first-child),
-body > footer {
-  content-visibility: auto;
-  contain-intrinsic-size: auto 900px;
-}
-
-/* Reveal on scroll where the browser supports scroll-driven animations. */
-@supports (animation-timeline: view()) {
-  .reveal {
-    animation: rise linear both;
-    animation-timeline: view();
-    animation-range: entry 0% entry 40%;
-  }
+  color: var(--ink-3);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  .caret::after,
-  .marquee,
-  .live-dot::after,
-  .rise,
-  .reveal {
-    animation: none;
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
   }
 }
