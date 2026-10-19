@@ -125,6 +125,8 @@ body {
   z-index: 60;
   pointer-events: none;
   opacity: 0.05;
+  transform: translateZ(0); /* own layer: rasterised once, never repainted on scroll */
+  contain: strict;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
@@ -180,6 +182,7 @@ body {
 }
 .marquee {
   animation: marquee 40s linear infinite;
+  will-change: transform;
 }
 
 @keyframes blink {
@@ -194,15 +197,26 @@ body {
   animation: blink 1s steps(1) infinite;
 }
 
+/* Pulse ring drawn on a pseudo-element and animated with transform/opacity (compositor only). */
 @keyframes pulse-ring {
-  0% {
-    box-shadow: 0 0 0 0 rgba(198, 244, 50, 0.6);
+  from {
+    transform: scale(1);
+    opacity: 0.6;
   }
-  100% {
-    box-shadow: 0 0 0 10px rgba(198, 244, 50, 0);
+  to {
+    transform: scale(3.5);
+    opacity: 0;
   }
 }
 .live-dot {
+  position: relative;
+}
+.live-dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: inherit;
   animation: pulse-ring 1.6s ease-out infinite;
 }
 
@@ -214,6 +228,13 @@ body {
 }
 .rise {
   animation: rise 0.45s ease-out both;
+}
+
+/* Below-the-fold sections skip layout and paint until they near the viewport. */
+main > section:not(:first-child),
+body > footer {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
 }
 
 /* Reveal on scroll where the browser supports scroll-driven animations. */
@@ -231,7 +252,7 @@ body {
   }
   .caret::after,
   .marquee,
-  .live-dot,
+  .live-dot::after,
   .rise,
   .reveal {
     animation: none;

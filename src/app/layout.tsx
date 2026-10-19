@@ -14,6 +14,7 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  preload: false, // small labels only; not worth competing with the heading and body fonts
 });
 
 const bricolage = Bricolage_Grotesque({

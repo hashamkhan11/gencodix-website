@@ -139,7 +139,7 @@ export function CtaBand({ title = "Tell us what you want to automate.", body }: 
     <section className="container-x mt-32">
       <div className="reveal relative overflow-hidden rounded-[2rem] border border-brand/30 bg-surface px-6 py-16 sm:px-14 sm:py-20">
         <div aria-hidden="true" className="grid-bg absolute inset-0" />
-        <div aria-hidden="true" className="absolute -bottom-40 left-1/2 h-80 w-[44rem] -translate-x-1/2 rounded-full bg-brand/25 blur-3xl" />
+        <div aria-hidden="true" className="absolute -bottom-56 left-1/2 h-[30rem] w-[60rem] -translate-x-1/2 bg-[radial-gradient(closest-side,rgba(198,244,50,0.22),transparent)]" />
         <div className="relative mx-auto max-w-3xl text-center">
           <h2 className="h-section text-sheen pb-1">{title}</h2>
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-ink-2">

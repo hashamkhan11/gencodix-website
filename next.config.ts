@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  experimental: {
+    // ~30 pages need few build workers; one per CPU core runs low-RAM machines out of memory.
+    cpus: 2,
+  },
   cacheComponents: true,
   partialPrefetching: true,
   turbopack: {

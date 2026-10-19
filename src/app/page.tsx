@@ -60,10 +60,10 @@ export default function Home() {
         <div aria-hidden="true" className="aurora absolute inset-0 -z-10" />
         <div aria-hidden="true" className="grid-bg absolute inset-0 -z-10" />
         <div className="container-x grid items-center gap-14 pb-16 pt-14 lg:grid-cols-[1.12fr_1fr] lg:pb-24 lg:pt-24">
-          <div className="rise">
+          <div>
             <Link
               href="/work"
-              className="group inline-flex items-center gap-2 rounded-full border border-line bg-surface/60 py-1 pl-1 pr-3 text-xs text-ink-2 backdrop-blur transition hover:border-ink-3"
+              className="group inline-flex items-center gap-2 rounded-full border border-line bg-surface/80 py-1 pl-1 pr-3 text-xs text-ink-2 transition hover:border-ink-3"
             >
               <span className="rounded-full bg-brand px-2 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-wider text-brand-ink">Shipped</span>
               KhataBol · PropNest · FitHub
@@ -79,7 +79,7 @@ export default function Home() {
 
             <form
               action="/start"
-              className="mt-9 flex max-w-xl flex-col gap-2 rounded-2xl border border-line bg-surface/80 p-2 shadow-[0_20px_60px_-30px_rgba(198,244,50,0.35)] backdrop-blur focus-within:border-brand/60 sm:flex-row sm:rounded-full"
+              className="mt-9 flex max-w-xl flex-col gap-2 rounded-2xl border border-line bg-surface/90 p-2 shadow-[0_20px_60px_-30px_rgba(198,244,50,0.35)] focus-within:border-brand/60 sm:flex-row sm:rounded-full"
             >
               <label htmlFor="idea" className="sr-only">Describe what you want to build</label>
               <input
@@ -257,7 +257,7 @@ export default function Home() {
                 <p className="mt-5 font-mono text-xs uppercase tracking-[0.16em] text-ink-2">{h.when}</p>
                 <ul className="mt-5 space-y-3">
                   {h.items.map((it) => (
-                    <li key={it.name} className="card bg-surface/70 p-5 backdrop-blur">
+                    <li key={it.name} className="card bg-surface/90 p-5">
                       <p className="font-display font-semibold">{it.name}</p>
                       <p className="mt-1.5 text-sm leading-relaxed text-ink-2">{it.body}</p>
                     </li>

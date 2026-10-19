@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CheckCheck, CornerDownRight, MessageCircle } from "lucide-react";
 
 // One scripted agent run, replayed on a loop. Every row is always rendered (only faded),
@@ -14,6 +14,7 @@ const LAST = tools.length + 2;
 
 export function HeroConsole() {
   const [step, setStep] = useState(0);
+  const root = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let t: ReturnType<typeof setTimeout>;
@@ -21,22 +22,37 @@ export function HeroConsole() {
       t = setTimeout(() => setStep(LAST), 0);
       return () => clearTimeout(t);
     }
+    // Only play while the card is on screen and the tab is visible.
     let s = 0;
+    let visible = false;
     const tick = () => {
       s = s >= LAST ? 0 : s + 1;
       setStep(s);
-      t = setTimeout(tick, s === LAST ? 3800 : s === 0 ? 700 : 1150);
+      schedule();
     };
-    t = setTimeout(tick, 700);
-    return () => clearTimeout(t);
+    const schedule = () => {
+      clearTimeout(t);
+      if (visible && !document.hidden) t = setTimeout(tick, s === LAST ? 3800 : s === 0 ? 700 : 1150);
+    };
+    const io = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      schedule();
+    });
+    if (root.current) io.observe(root.current);
+    document.addEventListener("visibilitychange", schedule);
+    return () => {
+      clearTimeout(t);
+      io.disconnect();
+      document.removeEventListener("visibilitychange", schedule);
+    };
   }, []);
 
   const shown = (n: number) => (step >= n ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1.5");
 
   return (
-    <div className="relative">
-      <div aria-hidden="true" className="absolute -inset-8 -z-10 rounded-[3rem] bg-brand/10 blur-3xl" />
-      <div className="overflow-hidden rounded-2xl border border-line bg-surface/90 shadow-[0_40px_120px_-40px_rgba(0,0,0,0.9)] backdrop-blur">
+    <div ref={root} className="relative">
+      <div aria-hidden="true" className="absolute -inset-12 -z-10 bg-[radial-gradient(closest-side,rgba(198,244,50,0.12),transparent)]" />
+      <div className="overflow-hidden rounded-2xl border border-line bg-surface shadow-[0_40px_120px_-40px_rgba(0,0,0,0.9)]">
         <div className="flex items-center justify-between border-b border-line px-4 py-3">
           <p className="flex items-center gap-2 font-mono text-xs text-ink-2">
             <span className="live-dot size-2 rounded-full bg-brand" /> agent · run #4821

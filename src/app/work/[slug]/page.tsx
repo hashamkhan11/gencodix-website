@@ -100,8 +100,8 @@ function ProductPage({ p }: { p: Product }) {
           </div>
           {note && <p className="mt-3 text-xs text-ink-3">{note}</p>}
 
-          <div className="rise relative mt-14">
-            <div aria-hidden="true" className="absolute -inset-x-10 -bottom-10 top-1/3 -z-10 blur-3xl" style={{ background: p.hue, opacity: 0.18 }} />
+          <div className="relative mt-14">
+            <div aria-hidden="true" className="absolute -inset-x-16 -bottom-20 top-1/4 -z-10 opacity-25" style={{ background: `radial-gradient(closest-side, ${p.hue}, transparent)` }} />
             <Image
               src={p.cover}
               alt={`${p.name} — ${p.category}`}

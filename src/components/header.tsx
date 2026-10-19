@@ -19,7 +19,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-40 px-3 pt-3">
-      <div className="mx-auto flex h-14 max-w-6xl items-center justify-between rounded-full border border-white/[0.08] bg-surface/70 pl-5 pr-2 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.8)] backdrop-blur-xl">
+      <div className="mx-auto flex h-14 max-w-6xl items-center justify-between rounded-full border border-white/[0.08] bg-surface/80 pl-5 pr-2 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.8)] backdrop-blur-md">
         <Logo />
 
         <nav aria-label="Main" className="hidden items-center gap-1 md:flex">
@@ -54,7 +54,7 @@ export function Header() {
       </div>
 
       {open && (
-        <nav id="mobile-nav" aria-label="Mobile" className="mx-auto mt-2 max-w-6xl rounded-3xl border border-line bg-surface/95 backdrop-blur-xl md:hidden">
+        <nav id="mobile-nav" aria-label="Mobile" className="mx-auto mt-2 max-w-6xl rounded-3xl border border-line bg-surface md:hidden">
           <div className="flex flex-col px-5 py-3">
             {nav.map((item) => (
               <Link key={item.href} href={item.href} onClick={close} className="py-3 text-base text-ink-2">
